@@ -25,6 +25,6 @@ class HashTokenizer(Tokzr):
 
 def build_tokenizer(texts: List[str], num_words: int):
     tokenizer = Tokenizer(num_words=num_words)
-    tokenizer.fit_on_sequences(texts)
+    tokenizer.fit_on_texts(texts)
 
     return tokenizer
