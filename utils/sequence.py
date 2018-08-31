@@ -3,7 +3,7 @@ from keras.utils import Sequence
 
 class DataTransformerGenerator(Sequence):
 
-    def __init__(self, x, y, transformer: None, batch_size, shuffled=False):
+    def __init__(self, x, y, batch_size, transformer=None, shuffled=False):
         self.__x = x
         self.__y = y
         self.__transformer = transformer
