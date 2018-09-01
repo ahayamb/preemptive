@@ -10,6 +10,7 @@ class DataTransformerGenerator(Sequence):
         self.__transformer = transformer
         self.__batch_size = batch_size
         self.__shuffled = shuffled
+        self.__shufle_data()
     
     def __len__(self):
         length = len(self.__x)
@@ -22,10 +23,13 @@ class DataTransformerGenerator(Sequence):
         batch_y = self.__y[lower_bound:upper_bound]
 
         return batch_x, batch_y
+
+    def __shufle_data(self):
+        idx = np.arange(len(self.__x))
+        np.random.shuffle(idx)
+        self.__x = self.__x[idx]
+        self.__y = self.__y[idx]
     
     def on_epoch_end(self):
         if self.__shuffled:
-            idx = np.arange(len(self.__x))
-            np.random.shuffle(idx)
-            self.__x = self.__x[idx]
-            self.__y = self.__y[idx]
+            self.__shufle_data()
