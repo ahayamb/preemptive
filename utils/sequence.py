@@ -2,7 +2,7 @@ import numpy as np
 from keras.utils import Sequence
 
 
-class DataTransformerGenerator(Sequence):
+class UnifiedMiniBatchSequence(Sequence):
 
     def __init__(self, x, y, batch_size, transformer=None, shuffled=False):
         self.__x = x
